@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="page">
+    <div class="header">
+        <h1>Welcome User!</h1>
+        <div th:switch="${taskList.empty}">
+            <div th:case="true">
+                <h2>No tasks are made yet!</h2>
+            </div>
+            <div th:case="false">
+                <h2>Insert Sorting here. (Not implemented yet)</h2>
+            </div>
+        </div>
+    </div>
+    <div class="tasks-container">
+        <div class="task-component" th:each="task:${taskList}">
+            <h2 th:text="${'Task ID: ' + task.taskID}"></h2>
+            <p th:text="${task.title}"></p>
+            <p th:text="${task.description}"></p>
+<!--            <p th:if="${!strings.isEmpty(task.dueDate)}" th:text="${task.dueDate}"></p>-->
+        </div>
+        <div class="form-container">
+            <form th:action="@{/tasks}" method="post">
+                <div>
+                    <label for="title" class="label">Title</label>
+                    <input type="text" class="text-input" id="title" name="title" required>
+                </div>
+                <div>
+                    <label for="description" class="label">Description</label>
+                    <input type="text" class="text-input" id="description" name="description" required>
+                </div>
+                <button>Add Task</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

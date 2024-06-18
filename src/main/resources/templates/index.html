@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .page {
+            text-align: center;
+            font-family: Arial;
+            margin: 30px;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding-bottom: 20px;
+        }
+        .page > h1 {
+            font-size: 60px;
+        }
+        .page > a > button {
+            font-size: 30px;
+            padding: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: #3399FF;
+            color: white;
+        }
+
+        .page > a > button:hover {
+            background-color: #0080FF;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>Secure Task Manager App Demo</h1>
+        <a href="/login">
+            <button>Login</button>
+        </a>
+    </div>
+</body>
+</html>

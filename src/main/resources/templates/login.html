@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+        .page {
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin: 30px;
+            font-family: Arial;
+        }
+        .page > h1 {
+            font-size: 60px;
+        }
+        .label-container {
+            font-size: 30px;
+        }
+        .submit-button {
+            font-size: 30px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>Login</h1>
+        <form action="/auth/generateToken" method="post">
+            <div class="label-container">
+                <label for="username" class="label">Username:</label>
+                <input type="text" class="text-input" id="username" name="username" required>
+            </div>
+            <div class="label-container">
+                <label for="password" class="label">Password:</label>
+                <input type="text" class="text-input" id="password" name="password" required>
+            </div>
+            <button type="submit" class="submit-button">Login</button>
+        </form>
+    </div>
+</body>
+</html>
