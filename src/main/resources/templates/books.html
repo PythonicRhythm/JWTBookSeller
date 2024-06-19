@@ -3,6 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial;
+        }
+        .header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            border-bottom: 1px solid black;
+        }
+        .header > h1 {
+            font-size: 60px;
+            margin: 20px;
+        }
+        .books-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: stretch;
+            width: 100%;
+            justify-content: space-evenly;
+            padding-top: 20px;
+        }
+        .book-component {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            width: 30%;
+            height: 100%;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="page">
@@ -29,8 +70,8 @@
     <div class="books-container">
         <div class="book-component" th:each="book:${bookList}">
             <h2 th:text="${'Book ID: ' + book.isbn}"></h2>
-            <p th:text="${book.title}"></p>
-            <p th:text="${book.description}"></p>
+            <h2 th:text="${book.title}"></h2>
+            <p th:text="${'Summary: ' + book.description}"></p>
 <!--            <p th:if="${!strings.isEmpty(task.dueDate)}" th:text="${task.dueDate}"></p>-->
         </div>
     </div>

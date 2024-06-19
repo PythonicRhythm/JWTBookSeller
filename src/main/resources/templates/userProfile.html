@@ -3,61 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .page {
+            font-family: Arial;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to User Profile</h1>
-    <script>
-        async function loginAndGetToken() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            const response = await fetch('http://localhost:8080/auth/generateToken', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password
-                })
-            });
-
-            if (response.ok) {
-                const token = await response.text();
-                localStorage.setItem('jwtToken', token);
-                document.getElementById('loginForm').style.display = 'none';
-                document.getElementById('profileAccess').style.display = 'block';
-            } else {
-                console.error('Failed to fetch token');
-            }
-        }
-
-        // Function to access the user profile page
-        async function accessUserProfile() {
-            const token = localStorage.getItem('jwtToken');
-            const response = await fetch('http://your-domain.com/auth/user/userProfile', {
-                method: 'GET',
-                headers: {
-                    'Authorization': 'Bearer ' + token
-                }
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                document.getElementById('profileData').innerText = JSON.stringify(data, null, 2);
-            } else {
-                console.error('Failed to fetch user profile');
-            }
-        }
-
-        // Event listeners for buttons
-        document.getElementById('loginButton').addEventListener('click', async () => {
-            await loginAndGetToken();
-        });
-
-        document.getElementById('profileButton').addEventListener('click', async () => {
-            await accessUserProfile();
-        });
-    </script>
+    <div class="page">
+        <div class="header">
+            <h1>Welcome to User Profile</h1>
+        </div>
+        <div class="profile-panel">
+            <h2>User Profile Details...</h2>
+        </div>
+    </div>
 </body>
 </html>
