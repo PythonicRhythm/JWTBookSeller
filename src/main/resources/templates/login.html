@@ -27,7 +27,7 @@
 <body>
     <div class="page">
         <h1>Login</h1>
-        <form action="/auth/generateToken" method="post">
+        <form th:action="@{/auth/login}" method="post">
             <div class="label-container">
                 <label for="username" class="label">Username:</label>
                 <input type="text" class="text-input" id="username" name="username" required>

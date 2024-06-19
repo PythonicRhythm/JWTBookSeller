@@ -8,34 +8,30 @@
 <div class="page">
     <div class="header">
         <h1>Welcome User!</h1>
-        <div th:switch="${taskList.empty}">
+        <div th:switch="${bookList.empty}">
             <div th:case="true">
                 <h2>No tasks are made yet!</h2>
             </div>
             <div th:case="false">
                 <h2>Insert Sorting here. (Not implemented yet)</h2>
             </div>
+            <div th:if="${authorities != null && !authorities.empty}">
+                <a th:if="${lists.contains(authorities, 'ROLE_ADMIN')}">
+                    <button>View your User Profile!</button>
+                </a>
+
+                <a th:if="${lists.contains(authorities, 'ROLE_USER')}">
+                    <button>View your User Profile!</button>
+                </a>
+            </div>
         </div>
     </div>
-    <div class="tasks-container">
-        <div class="task-component" th:each="task:${taskList}">
-            <h2 th:text="${'Task ID: ' + task.taskID}"></h2>
-            <p th:text="${task.title}"></p>
-            <p th:text="${task.description}"></p>
+    <div class="books-container">
+        <div class="book-component" th:each="book:${bookList}">
+            <h2 th:text="${'Book ID: ' + book.isbn}"></h2>
+            <p th:text="${book.title}"></p>
+            <p th:text="${book.description}"></p>
 <!--            <p th:if="${!strings.isEmpty(task.dueDate)}" th:text="${task.dueDate}"></p>-->
-        </div>
-        <div class="form-container">
-            <form th:action="@{/tasks}" method="post">
-                <div>
-                    <label for="title" class="label">Title</label>
-                    <input type="text" class="text-input" id="title" name="title" required>
-                </div>
-                <div>
-                    <label for="description" class="label">Description</label>
-                    <input type="text" class="text-input" id="description" name="description" required>
-                </div>
-                <button>Add Task</button>
-            </form>
         </div>
     </div>
 </div>

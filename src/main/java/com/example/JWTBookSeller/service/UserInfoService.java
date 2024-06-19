@@ -38,6 +38,12 @@ public class UserInfoService implements UserDetailsService {
         return "User Added Successfully";
     }
 
+    public String deleteUserByID(long id) {
+        repository.deleteById((int) id);
+        return "Successful User Deletion";
+    }
+
+
 
 }
 
